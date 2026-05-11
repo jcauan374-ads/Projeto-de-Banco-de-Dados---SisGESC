@@ -1,0 +1,52 @@
+# 🎓 SisGESC — ERP Educacional
+
+Sistema ERP educacional desenvolvido utilizando MySQL.
+
+## 📚 Tecnologias Utilizadas
+
+- MySQL
+- SQL
+- DBML
+- Data Warehouse
+- Engenharia de Dados
+
+## ⚙️ Funcionalidades
+
+### 👨‍🎓 Acadêmico
+- Cadastro de alunos
+- Cadastro de professores
+- Matrículas
+- Controle de frequência
+- Controle de notas
+
+### 💰 Financeiro
+- Contratos
+- Mensalidades
+- Pagamentos
+- Métodos de pagamento
+
+### 🏢 Recursos Humanos
+- Funcionários
+- Departamentos
+- Folha de pagamento
+
+### 📊 BI / Data Warehouse
+- Modelo estrela
+- Indicadores financeiros
+- Análise de arrecadação
+
+## 🚀 Como Executar
+
+Execute os scripts na ordem:
+
+```sql
+01_database.sql
+02_tables.sql
+03_triggers.sql
+04_inserts.sql
+05_queries.sql
+```
+
+## 👨‍💻 Autor
+
+Caetano Silva

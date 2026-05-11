@@ -1,0 +1,11 @@
+CREATE TABLE tb_pessoas (
+ pk_pessoa_id INT PRIMARY KEY AUTO_INCREMENT,
+ nome VARCHAR(100) NOT NULL,
+ sobrenome VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE tb_alunos (
+ pk_pessoa_id INT PRIMARY KEY,
+ ra VARCHAR(20) UNIQUE NOT NULL,
+ curso VARCHAR(100) NOT NULL
+);
