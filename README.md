@@ -148,7 +148,7 @@ SisGESC/
 ## 1️⃣ Clone o repositório
 
 ```bash
-git clone https://github.com/caetano3009/SisGESC.git
+git clone https://github.com/jcauan374-ads/SisGESC.git
 ```
 
 ---
@@ -349,11 +349,17 @@ SELECT * FROM tb_funcionarios;
 
 # 👨‍💻 Autor
 
-## Caetano Silva
+## José Cauan
 
 <p align="left">
-  <a href="https://github.com/caetano3009">
-    <img src="https://img.shields.io/badge/GitHub-caetano3009-000?style=for-the-badge&logo=github" />
+  <a href="https://github.com/jcauan374-ads">
+    <img src="https://img.shields.io/badge/GitHub-jcauan374--ads-000?style=for-the-badge&logo=github" />
+  </a>
+  <a href="https://br.linkedin.com/in/jos%C3%A9-cauan-8247922b0">
+    <img src="https://img.shields.io/badge/LinkedIn-José_Cauan-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="mailto:jcauan374@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-jcauan374@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
 </p>
 
@@ -380,5 +386,5 @@ Projeto acadêmico criado para estudos de:
 ---
 
 <p align="center">
-  Feito com 💙 por Caetano Silva
+  Feito com 💙 por José Cauan
 </p>
