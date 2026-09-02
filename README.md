@@ -5,7 +5,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql" />
+  <img src="https://img.shields.io/badge/PostgreSQL--Supabase-Database-3ecf8e?style=for-the-badge&logo=postgresql" />
+  <img src="https://img.shields.io/badge/MySQL-Legacy-blue?style=for-the-badge&logo=mysql" />
   <img src="https://img.shields.io/badge/SQL-Advanced-orange?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Data%20Warehouse-BI-green?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-success?style=for-the-badge" />
@@ -15,7 +16,7 @@
 
 # 📚 Sobre o Projeto
 
-O **SisGESC** é um sistema ERP educacional completo desenvolvido utilizando **MySQL**, focado em:
+O **SisGESC** é um ERP educacional acadêmico estruturado em duas trilhas de banco: os scripts originais em **MySQL** (`02_tables.sql` a `05_queries.sql`) e o novo schema unificado em **PostgreSQL para Supabase** (`schema.sql`). O projeto é focado em:
 
 - Gestão Acadêmica
 - Recursos Humanos
@@ -100,7 +101,8 @@ SisGESC
 
 | Tecnologia | Uso |
 |---|---|
-| MySQL | Banco de Dados |
+| PostgreSQL / Supabase | Schema unificado e dashboard demonstrativo |
+| MySQL | Scripts acadêmicos originais |
 | SQL | Scripts |
 | DBML | Modelagem |
 | Data Warehouse | BI |
@@ -128,8 +130,8 @@ SisGESC/
 │   └── sisgesc.dbml
 │
 ├── sql/
-│   ├── 01_database.sql
-│   ├── 02_tables.sql
+│   ├── schema.sql                 # PostgreSQL / Supabase — schema unificado
+│   ├── 02_tables.sql              # MySQL — estrutura original
 │   ├── 03_triggers.sql
 │   ├── 04_inserts.sql
 │   └── 05_queries.sql
@@ -153,17 +155,30 @@ git clone https://github.com/jcauan374-ads/SisGESC.git
 
 ---
 
-## 2️⃣ Abra no MySQL Workbench
+## 2️⃣ Escolha a trilha de banco
 
-Execute os scripts na ordem:
+### PostgreSQL / Supabase — recomendada para o dashboard
+
+Execute o arquivo unificado no SQL Editor do Supabase:
 
 ```sql
-01_database.sql
+schema.sql
+```
+
+Ele cria as tabelas, chaves, triggers, views analíticas e políticas RLS do modelo PostgreSQL.
+
+### MySQL — scripts acadêmicos originais
+
+No MySQL Workbench, execute os arquivos disponíveis nesta ordem:
+
+```sql
 02_tables.sql
 03_triggers.sql
 04_inserts.sql
 05_queries.sql
 ```
+
+> Os scripts MySQL foram mantidos como referência acadêmica. O `schema.sql` possui nomes, tipos e relacionamentos próprios da versão PostgreSQL/Supabase e não deve ser misturado com os scripts MySQL na mesma base.
 
 ---
 
@@ -219,11 +234,19 @@ ON f.fk_cargo = c.pk_cargo;
 
 ---
 
+# 🧭 Dashboard e schema unificado
+
+O dashboard está disponível em [`index.html`](./index.html) e usa a linguagem visual do SisGESC para demonstrar os módulos acadêmico, RH, financeiro, BI, consultas SQL, estrutura do banco, perfil profissional e portfólio.
+
+O schema PostgreSQL completo está em [`schema.sql`](./schema.sql). Ele centraliza tabelas, restrições, triggers, views analíticas e políticas RLS em um único arquivo. O dashboard usa dados demonstrativos quando as credenciais do Supabase não estão configuradas.
+
+> **Segurança:** não coloque chaves `service_role`, tokens privados ou credenciais de banco no `index.html`. Para conectar dados reais, use apenas uma chave `anon` pública com políticas RLS adequadas e, preferencialmente, um back-end protegido.
+
 # 🗄️ Exemplo de Modelagem DBML
 
 ```dbml
 Project SisGESC {
-  database_type: 'MySQL'
+  database_type: 'MySQL' // modelo DBML original; schema.sql usa PostgreSQL/Supabase
 }
 
 Table tb_pessoas {
@@ -244,7 +267,9 @@ Ref: tb_alunos.pk_pessoa_id > tb_pessoas.pk_pessoa_id
 
 ---
 
-# 📦 Scripts SQL
+# 📦 Scripts SQL originais
+
+Além do `schema.sql` unificado para PostgreSQL/Supabase, o repositório mantém os scripts MySQL originais para fins acadêmicos e comparação de modelagem.
 
 ## 01_database.sql
 

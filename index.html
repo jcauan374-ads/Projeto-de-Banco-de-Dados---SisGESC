@@ -1114,12 +1114,14 @@ function filterTable(input, tbodyId) {
 
 // ====== SUPABASE ======
 // 1. Crie um projeto em https://supabase.com
-// 2. Rode schema.sql e depois seed.sql no SQL Editor do projeto
+// 2. Rode schema.sql no SQL Editor do projeto; os dados demonstrativos podem ser inseridos separadamente
 // 3. Cole aqui a Project URL e a chave "anon public" (Project Settings > API)
-const SUPABASE_URL = 'vjmgohhrfgipwwvfiksu';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqbWdvaGhyZmdpcHd3dmZpa3N1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTgwNjE4NiwiZXhwIjoyMTAxMzgyMTg2fQ.RcAsFbPXeZtN8BL_OMtVqBw-xMeyxvZ6ciwul7N3NVU';
+// Configure apenas com uma chave anon pública em ambiente seguro.
+// Nunca publique chaves service_role ou tokens privados no GitHub.
+const SUPABASE_URL = '';
+const SUPABASE_ANON_KEY = '';
 
-const supabaseConfigured = !SUPABASE_URL.includes('COLE_SUA') && !SUPABASE_ANON_KEY.includes('COLE_SUA');
+const supabaseConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 const db = supabaseConfigured ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
 if (!supabaseConfigured) {
