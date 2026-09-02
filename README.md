@@ -16,7 +16,7 @@
 
 # 📚 Sobre o Projeto
 
-O **SisGESC** é um ERP educacional acadêmico estruturado em duas trilhas de banco: os scripts originais em **MySQL** (`02_tables.sql` a `05_queries.sql`) e o novo schema unificado em **PostgreSQL para Supabase** (`schema.sql`). O projeto é focado em:
+O **SisGESC** é um ERP educacional acadêmico estruturado em duas trilhas de banco: os scripts originais em **MySQL** (`scripts/02_tables.sql` a `scripts/05_queries.sql`) e o novo schema unificado em **PostgreSQL para Supabase** (`scripts/schema.sql`). O projeto é focado em:
 
 - Gestão Acadêmica
 - Recursos Humanos
@@ -129,12 +129,13 @@ SisGESC/
 ├── dbml/
 │   └── sisgesc.dbml
 │
-├── sql/
+├── scripts/                      # SQL e arquivos TXT do projeto
 │   ├── schema.sql                 # PostgreSQL / Supabase — schema unificado
 │   ├── 02_tables.sql              # MySQL — estrutura original
 │   ├── 03_triggers.sql
 │   ├── 04_inserts.sql
-│   └── 05_queries.sql
+│   ├── 05_queries.sql
+│   └── LICENSE.txt
 │
 ├── imagens/
 │   └── diagrama.png
@@ -161,8 +162,8 @@ git clone https://github.com/jcauan374-ads/SisGESC.git
 
 Execute o arquivo unificado no SQL Editor do Supabase:
 
-```sql
-schema.sql
+```bash
+scripts/schema.sql
 ```
 
 Ele cria as tabelas, chaves, triggers, views analíticas e políticas RLS do modelo PostgreSQL.
@@ -171,14 +172,14 @@ Ele cria as tabelas, chaves, triggers, views analíticas e políticas RLS do mod
 
 No MySQL Workbench, execute os arquivos disponíveis nesta ordem:
 
-```sql
-02_tables.sql
-03_triggers.sql
-04_inserts.sql
-05_queries.sql
+```bash
+scripts/02_tables.sql
+scripts/03_triggers.sql
+scripts/04_inserts.sql
+scripts/05_queries.sql
 ```
 
-> Os scripts MySQL foram mantidos como referência acadêmica. O `schema.sql` possui nomes, tipos e relacionamentos próprios da versão PostgreSQL/Supabase e não deve ser misturado com os scripts MySQL na mesma base.
+> Os scripts MySQL foram mantidos como referência acadêmica. O `scripts/schema.sql` possui nomes, tipos e relacionamentos próprios da versão PostgreSQL/Supabase e não deve ser misturado com os scripts MySQL na mesma base.
 
 ---
 
@@ -238,7 +239,7 @@ ON f.fk_cargo = c.pk_cargo;
 
 O dashboard está disponível em [`index.html`](./index.html) e usa a linguagem visual do SisGESC para demonstrar os módulos acadêmico, RH, financeiro, BI, consultas SQL, estrutura do banco, perfil profissional e portfólio.
 
-O schema PostgreSQL completo está em [`schema.sql`](./schema.sql). Ele centraliza tabelas, restrições, triggers, views analíticas e políticas RLS em um único arquivo. O dashboard usa dados demonstrativos quando as credenciais do Supabase não estão configuradas.
+O schema PostgreSQL completo está em [`scripts/schema.sql`](./scripts/schema.sql). Ele centraliza tabelas, restrições, triggers, views analíticas e políticas RLS em um único arquivo. O dashboard usa dados demonstrativos quando as credenciais do Supabase não estão configuradas.
 
 > **Segurança:** não coloque chaves `service_role`, tokens privados ou credenciais de banco no `index.html`. Para conectar dados reais, use apenas uma chave `anon` pública com políticas RLS adequadas e, preferencialmente, um back-end protegido.
 
@@ -269,9 +270,9 @@ Ref: tb_alunos.pk_pessoa_id > tb_pessoas.pk_pessoa_id
 
 # 📦 Scripts SQL originais
 
-Além do `schema.sql` unificado para PostgreSQL/Supabase, o repositório mantém os scripts MySQL originais para fins acadêmicos e comparação de modelagem.
+Além do `scripts/schema.sql` unificado para PostgreSQL/Supabase, o repositório mantém os scripts MySQL originais para fins acadêmicos e comparação de modelagem.
 
-## 01_database.sql
+## 01_database.sql — referência conceitual
 
 ```sql
 DROP DATABASE IF EXISTS db_sisgesc;
