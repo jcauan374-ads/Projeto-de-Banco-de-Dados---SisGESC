@@ -16,7 +16,7 @@
 
 # 📚 Sobre o Projeto
 
-O **SisGESC** é um ERP educacional acadêmico estruturado em duas trilhas de banco: os scripts originais em **MySQL** (`scripts/02_tables.sql` a `scripts/05_queries.sql`) e o novo schema unificado em **PostgreSQL para Supabase** (`scripts/schema.sql`). O projeto é focado em:
+O **SisGESC** é um ERP educacional acadêmico estruturado em duas trilhas de banco: os scripts originais em **MySQL** (`scripts/02_tables.sql` a `scripts/05_queries.sql`) e os schemas em **PostgreSQL para Supabase** (`scripts/schema.sql` e `scripts/supabase-enterprise-starter.sql`). O dashboard enterprise é uma experiência estática, responsiva e funcional em modo demonstrativo, com conexão opcional ao Supabase por meio da chave pública `anon`. O projeto é focado em:
 
 - Gestão Acadêmica
 - Recursos Humanos
@@ -118,7 +118,6 @@ SisGESC
 SisGESC/
 │
 ├── README.md
-├── LICENSE
 ├── .gitignore
 │
 ├── docs/
@@ -135,6 +134,7 @@ SisGESC/
 │   ├── 03_triggers.sql
 │   ├── 04_inserts.sql
 │   ├── 05_queries.sql
+│   ├── supabase-enterprise-starter.sql # Starter enterprise com RLS e multi-tenant
 │   └── LICENSE.txt
 │
 ├── imagens/
@@ -160,13 +160,19 @@ git clone https://github.com/jcauan374-ads/SisGESC.git
 
 ### PostgreSQL / Supabase — recomendada para o dashboard
 
-Execute o arquivo unificado no SQL Editor do Supabase:
+Para a modelagem acadêmica, execute o arquivo unificado no SQL Editor do Supabase:
 
 ```bash
 scripts/schema.sql
 ```
 
-Ele cria as tabelas, chaves, triggers, views analíticas e políticas RLS do modelo PostgreSQL.
+Para a camada enterprise do dashboard, execute também o starter:
+
+```bash
+scripts/supabase-enterprise-starter.sql
+```
+
+O starter cria módulos de leads, biblioteca, patrimônio, perfis, papéis, permissões, auditoria, índices e políticas RLS com isolamento por `tenant_id`. Revise o tenant inicial e as regras de produção antes de usar dados reais.
 
 ### MySQL — scripts acadêmicos originais
 
@@ -237,9 +243,9 @@ ON f.fk_cargo = c.pk_cargo;
 
 # 🧭 Dashboard e schema unificado
 
-O dashboard está disponível em [`index.html`](./index.html) e usa a linguagem visual do SisGESC para demonstrar os módulos acadêmico, RH, financeiro, BI, consultas SQL, estrutura do banco, perfil profissional e portfólio.
+O dashboard está disponível em [`index.html`](./index.html) e usa a linguagem visual do SisGESC para demonstrar visão executiva, módulo acadêmico, financeiro, biblioteca, patrimônio, leads, usuários, auditoria, consultas SQL, estrutura do banco, perfil profissional e portfólio.
 
-O schema PostgreSQL completo está em [`scripts/schema.sql`](./scripts/schema.sql). Ele centraliza tabelas, restrições, triggers, views analíticas e políticas RLS em um único arquivo. O dashboard usa dados demonstrativos quando as credenciais do Supabase não estão configuradas.
+O schema PostgreSQL acadêmico está em [`scripts/schema.sql`](./scripts/schema.sql), enquanto o starter enterprise está em [`scripts/supabase-enterprise-starter.sql`](./scripts/supabase-enterprise-starter.sql). O dashboard funciona com dados demonstrativos quando as credenciais públicas do Supabase não estão configuradas e pode consultar o banco real quando `SUPABASE_URL` e `SUPABASE_ANON_KEY` forem preenchidos no bloco de configuração do `index.html`.
 
 > **Segurança:** não coloque chaves `service_role`, tokens privados ou credenciais de banco no `index.html`. Para conectar dados reais, use apenas uma chave `anon` pública com políticas RLS adequadas e, preferencialmente, um back-end protegido.
 
@@ -270,7 +276,7 @@ Ref: tb_alunos.pk_pessoa_id > tb_pessoas.pk_pessoa_id
 
 # 📦 Scripts SQL originais
 
-Além do `scripts/schema.sql` unificado para PostgreSQL/Supabase, o repositório mantém os scripts MySQL originais para fins acadêmicos e comparação de modelagem.
+Além do `scripts/schema.sql` unificado e do `scripts/supabase-enterprise-starter.sql` para PostgreSQL/Supabase, o repositório mantém os scripts MySQL originais para fins acadêmicos e comparação de modelagem.
 
 ## 01_database.sql — referência conceitual
 
